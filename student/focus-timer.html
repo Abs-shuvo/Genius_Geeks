@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Timer - Genius Geeks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .timer-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        #timer {
+            font-size: 80px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 30px 0;
+        }
+        .btn-timer {
+            width: 150px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="timer-card">
+                    <h2><i class="fas fa-clock"></i> Focus Timer</h2>
+                    <p class="text-muted">Pomodoro Technique</p>
+
+                    <div id="timer">25:00</div>
+
+                    <button class="btn btn-success btn-lg btn-timer" onclick="startTimer()">
+                        <i class="fas fa-play"></i> Start
+                    </button>
+                    <button class="btn btn-warning btn-lg btn-timer" onclick="pauseTimer()">
+                        <i class="fas fa-pause"></i> Pause
+                    </button>
+                    <button class="btn btn-danger btn-lg btn-timer" onclick="resetTimer()">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+
+                    <hr class="my-4">
+
+                    <a href="dashboard.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let minutes = 25;
+        let seconds = 0;
+        let interval = null;
+
+        function updateDisplay() {
+            document.getElementById('timer').textContent = 
+                String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+        }
+
+        function startTimer() {
+            if (interval) return;
+            interval = setInterval(() => {
+                if (seconds === 0) {
+                    if (minutes === 0) {
+                        clearInterval(interval);
+                        interval = null;
+                        alert('Time is up! Take a 5-minute break!');
+                        return;
+                    }
+                    minutes--;
+                    seconds = 59;
+                } else {
+                    seconds--;
+                }
+                updateDisplay();
+            }, 1000);
+        }
+
+        function pauseTimer() {
+            if (interval) {
+                clearInterval(interval);
+                interval = null;
+            }
+        }
+
+        function resetTimer() {
+            pauseTimer();
+            minutes = 25;
+            seconds = 0;
+            updateDisplay();
+        }
+    </script>
+</body>
+</html>
