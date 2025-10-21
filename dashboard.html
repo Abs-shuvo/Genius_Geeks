@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Genius Geeks</title>
+</head>
+<body>
+    <script>
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+        if (!user.user_id) {
+            window.location.href = 'login.html';
+        } else {
+            switch(user.role) {
+                case 'admin':
+                    window.location.href = 'admin/dashboard.html';
+                    break;
+                case 'teacher':
+                    window.location.href = 'teacher/dashboard.html';
+                    break;
+                case 'student':
+                    window.location.href = 'student/dashboard.html';
+                    break;
+                case 'parent':
+                    window.location.href = 'parent/dashboard.html';
+                    break;
+                default:
+                    window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+</html>
