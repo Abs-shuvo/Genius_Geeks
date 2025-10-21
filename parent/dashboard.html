@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Dashboard - Genius Geeks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .sidebar {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            background: rgba(255,255,255,0.1);
+            padding-left: 30px;
+        }
+        .main-content {
+            padding: 30px;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .feature-card i {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- SIDEBAR -->
+            <div class="col-md-2 sidebar">
+                <div class="p-3">
+                    <h4 class="mb-4"><i class="fas fa-users"></i> Genius Geeks</h4>
+                    <p class="small">Parent Portal</p>
+                    <hr>
+
+                    <a href="dashboard.html"><i class="fas fa-home me-2"></i> Dashboard</a>
+                    <a href="my-children.html"><i class="fas fa-child me-2"></i> My Children</a>
+                    <a href="progress-reports.html"><i class="fas fa-chart-line me-2"></i> Progress Reports</a>
+                    <a href="attendance.html"><i class="fas fa-calendar-check me-2"></i> Attendance</a>
+                    <a href="results.html"><i class="fas fa-trophy me-2"></i> Results</a>
+                    <a href="meetings.html"><i class="fas fa-handshake me-2"></i> Teacher Meetings</a>
+                    <a href="payments.html"><i class="fas fa-credit-card me-2"></i> Payments</a>
+                    <a href="surveys.html"><i class="fas fa-poll me-2"></i> Surveys</a>
+                    <a href="notifications.html"><i class="fas fa-bell me-2"></i> Notifications</a>
+
+                    <hr>
+                    <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i> Logout</a>
+                </div>
+            </div>
+
+            <!-- MAIN CONTENT -->
+            <div class="col-md-10 main-content">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Parent Dashboard</h2>
+                    <div>
+                        <span id="userName" class="me-3"></span>
+                        <button class="btn btn-danger btn-sm" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+
+                <!-- MY CHILDREN -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5><i class="fas fa-child me-2"></i> My Children</h5>
+                        <div class="list-group">
+                            <div class="list-group-item">
+                                <strong>Jane Student</strong> - Class 10A - Roll: STU001
+                                <div class="mt-2">
+                                    <span class="badge bg-success">Attendance: 95%</span>
+                                    <span class="badge bg-primary">Grade: A</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FEATURES GRID -->
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="feature-card text-primary" onclick="location.href='progress-reports.html'">
+                            <i class="fas fa-chart-line"></i>
+                            <h5>Progress Reports</h5>
+                            <p class="small">View & acknowledge</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="feature-card text-success" onclick="location.href='results.html'">
+                            <i class="fas fa-trophy"></i>
+                            <h5>View Results</h5>
+                            <p class="small">Check performance</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="feature-card text-warning" onclick="location.href='meetings.html'">
+                            <i class="fas fa-handshake"></i>
+                            <h5>Teacher Meetings</h5>
+                            <p class="small">Book & manage</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="feature-card text-info" onclick="location.href='payments.html'">
+                            <i class="fas fa-credit-card"></i>
+                            <h5>Payments</h5>
+                            <p class="small">Pay fees online</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <div class="feature-card text-danger" onclick="location.href='attendance.html'">
+                            <i class="fas fa-calendar-check"></i>
+                            <h5>Attendance</h5>
+                            <p class="small">Track attendance</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="feature-card text-secondary" onclick="location.href='surveys.html'">
+                            <i class="fas fa-poll"></i>
+                            <h5>Surveys</h5>
+                            <p class="small">Give feedback</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="feature-card text-primary" onclick="location.href='notifications.html'">
+                            <i class="fas fa-bell"></i>
+                            <h5>Notifications</h5>
+                            <p class="small">Important updates</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="feature-card text-success" onclick="location.href='my-children.html'">
+                            <i class="fas fa-info-circle"></i>
+                            <h5>Student Info</h5>
+                            <p class="small">View details</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        if (!user.user_id || user.role !== 'parent') {
+            window.location.href = '../login.html';
+        }
+
+        document.getElementById('userName').textContent = 'Welcome, ' + user.full_name;
+
+        function logout() {
+            fetch('../api/logout.php');
+            localStorage.removeItem('user');
+            window.location.href = '../login.html';
+        }
+    </script>
+</body>
+</html>
